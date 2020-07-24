@@ -24,7 +24,7 @@ window.addEventListener("load", () => {
       //minute 20:00 to start again once API key is functional (fingers crossed)
       //switched to WeatherStack API because I couldn't get the key to work for previous API provider.
       //now to search how to update the query to use LAT & LONG instead of City
-      const api = `http://api.weatherstack.com/current?access_key=a4faca2f49a36b134852aaa34ec0ed1e&query=Atlanta`;
+      const api = `http://api.weatherstack.com/current?access_key=a4faca2f49a36b134852aaa34ec0ed1e&query=${lat},${long}`;
 
       fetch(api)
         .then((response) => {
