@@ -19,8 +19,12 @@ window.addEventListener("load", () => {
     navigator.geolocation.getCurrentPosition((position) => {
       long = position.coords.longitude;
       lat = position.coords.latitude;
-
-      const api = `http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={697e7e756f4ba3e54ff32639dc254b53}`;
+      console.log(position);
+      //Youtube Video link: https://www.youtube.com/watch?v=wPElVpR1rwA
+      //minute 20:00 to start again once API key is functional (fingers crossed)
+      //switched to WeatherStack API because I couldn't get the key to work for previous API provider.
+      //now to search how to update the query to use LAT & LONG instead of City
+      const api = `http://api.weatherstack.com/current?access_key=a4faca2f49a36b134852aaa34ec0ed1e&query=Atlanta`;
 
       fetch(api)
         .then((response) => {
