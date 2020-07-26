@@ -14,6 +14,15 @@
 window.addEventListener("load", () => {
   let long;
   let lat;
+  //let temperatureDescription = document.querySelector(
+  // ".temperature-description"
+  //);
+  let temperatureDegree = document.querySelector(".temperature-degree");
+  let temperatureDescription = document.querySelector(
+    ".temperature-description"
+  );
+  let locationTimezone = document.querySelector(".location-timezone");
+
   //this will only work if the user allows it when the popup comes up
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -24,6 +33,7 @@ window.addEventListener("load", () => {
       //minute 20:00 to start again once API key is functional (fingers crossed)
       //switched to WeatherStack API because I couldn't get the key to work for previous API provider.
       //now to search how to update the query to use LAT & LONG instead of City
+
       const api = `http://api.weatherstack.com/current?access_key=a4faca2f49a36b134852aaa34ec0ed1e&query=${lat},${long}&units=f`;
 
       fetch(api)
@@ -32,6 +42,12 @@ window.addEventListener("load", () => {
         })
         .then((data) => {
           console.log(data);
+          const { temperature } = data.current;
+          const { weatherType } = data.current.weather_descriptions[0];
+          console.log(data.current.weather_descriptions[0]);
+          //Set DOM Elements from the API
+          temperatureDegree.textContent = temperature;
+          temperatureDescription.textContent = weatherType;
         });
     });
   } else {
