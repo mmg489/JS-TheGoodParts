@@ -19,6 +19,7 @@ window.addEventListener("load", () => {
   );
   let temperatureDegree = document.querySelector(".temperature-degree");
   let locationTimezone = document.querySelector(".location-timezone");
+  let locationlocalTime = document.querySelector(".location-localTime");
 
   //this will only work if the user allows it when the popup comes up
   if (navigator.geolocation) {
@@ -40,15 +41,18 @@ window.addEventListener("load", () => {
         .then((data) => {
           console.log(data);
           const { temperature } = data.current;
-          const { weatherType } = data.current.weather_descriptions[0];
-          console.log(data.current.weather_descriptions[0]);
-          const { timezone_id } = data.location.timezone_id;
-          console.log(data.location.timezone_id);
+          const weatherType = data.current.weather_descriptions[0];
+          const localtime = data.location.localtime;
+          console.log(data.location.localtime);
+          //console.log(data.current.weather_descriptions[0]);
+          const timezone_id = data.location.region;
+          //console.log(data.location.timezone_id);
 
           //Set DOM Elements from the API
           temperatureDegree.textContent = temperature;
-          temperatureDescription.textContent = { weatherType };
-          locationTimezone.textContent = { timezone_id };
+          temperatureDescription.textContent = weatherType;
+          locationTimezone.textContent = timezone_id;
+          locationlocalTime.textContent = localtime;
         });
     });
   } else {
