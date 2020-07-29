@@ -14,13 +14,10 @@
 window.addEventListener("load", () => {
   let long;
   let lat;
-  //let temperatureDescription = document.querySelector(
-  // ".temperature-description"
-  //);
-  let temperatureDegree = document.querySelector(".temperature-degree");
   let temperatureDescription = document.querySelector(
     ".temperature-description"
   );
+  let temperatureDegree = document.querySelector(".temperature-degree");
   let locationTimezone = document.querySelector(".location-timezone");
 
   //this will only work if the user allows it when the popup comes up
@@ -45,12 +42,29 @@ window.addEventListener("load", () => {
           const { temperature } = data.current;
           const { weatherType } = data.current.weather_descriptions[0];
           console.log(data.current.weather_descriptions[0]);
+          const { timezone_id } = data.location.timezone_id;
+          console.log(data.location.timezone_id);
+
           //Set DOM Elements from the API
           temperatureDegree.textContent = temperature;
-          temperatureDescription.textContent = weatherType;
+          //temperatureDescription.textContent = { weatherType };
+          locationTimezone.textContent = { timezone_id };
         });
     });
   } else {
     h1.textContent = "Location Unavailable please allow geolocation";
   }
 });
+
+const apiKey =
+  "pk.eyJ1IjoibW1nNDg5IiwiYSI6ImNrZDZuY3dvdTBzMjcycXJ0cGN4Z2t1aGgifQ.yDCZcMgnCOrxM16gjHV41A";
+
+const api2 = `https://api.mapbox.com/geocoding/v5/mapbox.places/supermarket%20groceries%20grocery%20market%20super.json?proximity=-84.0695,33.931264&limit=3&access_token=pk.eyJ1IjoibW1nNDg5IiwiYSI6ImNrZDZuY3dvdTBzMjcycXJ0cGN4Z2t1aGgifQ.yDCZcMgnCOrxM16gjHV41A`;
+
+fetch(api2)
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+  });
