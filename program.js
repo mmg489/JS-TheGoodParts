@@ -47,7 +47,7 @@ window.addEventListener("load", () => {
 
           //Set DOM Elements from the API
           temperatureDegree.textContent = temperature;
-          //temperatureDescription.textContent = { weatherType };
+          temperatureDescription.textContent = { weatherType };
           locationTimezone.textContent = { timezone_id };
         });
     });
@@ -55,16 +55,3 @@ window.addEventListener("load", () => {
     h1.textContent = "Location Unavailable please allow geolocation";
   }
 });
-
-const apiKey =
-  "pk.eyJ1IjoibW1nNDg5IiwiYSI6ImNrZDZuY3dvdTBzMjcycXJ0cGN4Z2t1aGgifQ.yDCZcMgnCOrxM16gjHV41A";
-
-const api2 = `https://api.mapbox.com/geocoding/v5/mapbox.places/supermarket%20groceries%20grocery%20market%20super.json?proximity=-84.0695,33.931264&limit=3&access_token=pk.eyJ1IjoibW1nNDg5IiwiYSI6ImNrZDZuY3dvdTBzMjcycXJ0cGN4Z2t1aGgifQ.yDCZcMgnCOrxM16gjHV41A`;
-
-fetch(api2)
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    console.log(data);
-  });
