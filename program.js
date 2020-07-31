@@ -20,13 +20,14 @@ window.addEventListener("load", () => {
   let temperatureDegree = document.querySelector(".temperature-degree");
   let locationTimezone = document.querySelector(".location-timezone");
   let locationlocalTime = document.querySelector(".location-localTime");
+  let icon = document.querySelector(".description-icon");
 
   //this will only work if the user allows it when the popup comes up
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       long = position.coords.longitude;
       lat = position.coords.latitude;
-      console.log(position);
+      //console.log(position);
       //Youtube Video link: https://www.youtube.com/watch?v=wPElVpR1rwA
       //minute 20:00 to start again once API key is functional (fingers crossed)
       //switched to WeatherStack API because I couldn't get the key to work for previous API provider.
@@ -42,6 +43,7 @@ window.addEventListener("load", () => {
           console.log(data);
           const { temperature } = data.current;
           const weatherType = data.current.weather_descriptions[0];
+          const weatherIcon = data.current.weather_icons[0];
           const localtime = data.location.localtime;
           console.log(data.location.localtime);
           //console.log(data.current.weather_descriptions[0]);
@@ -51,6 +53,7 @@ window.addEventListener("load", () => {
           //Set DOM Elements from the API
           temperatureDegree.textContent = temperature;
           temperatureDescription.textContent = weatherType;
+          icon.textContent = weatherIcon;
           locationTimezone.textContent = timezone_id;
           locationlocalTime.textContent = localtime;
         });
