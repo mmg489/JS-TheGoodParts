@@ -10,9 +10,9 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(rgb(24, 200, 143), rgb(75, 62, 143));
-  font-family: "Recursive", sans-serif;
-  color: whitesmoke;
+  background: linear-gradient(rgb(10, 150, 140), rgb(75, 62, 143));
+  font-family: "Press Start 2P", cursive;
+  color: hotpink;
 }
 
 .location,
