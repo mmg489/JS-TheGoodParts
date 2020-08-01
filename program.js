@@ -20,7 +20,7 @@ window.addEventListener("load", () => {
   let temperatureDegree = document.querySelector(".temperature-degree");
   let locationTimezone = document.querySelector(".location-timezone");
   let locationlocalTime = document.querySelector(".location-localTime");
-  let icon = document.querySelector(".description-icon");
+  let icon = document.querySelector("#description_icon");
 
   //this will only work if the user allows it when the popup comes up
   if (navigator.geolocation) {
@@ -53,9 +53,16 @@ window.addEventListener("load", () => {
           //Set DOM Elements from the API
           temperatureDegree.textContent = temperature;
           temperatureDescription.textContent = weatherType;
-          icon.textContent = weatherIcon;
+          //icon.textContent = weatherIcon;
           locationTimezone.textContent = timezone_id;
           locationlocalTime.textContent = localtime;
+
+          function addImage() {
+            var img = new Image();
+            img.src = weatherIcon;
+            description_icon.appendChild(img);
+          }
+          addImage();
         });
     });
   } else {

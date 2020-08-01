@@ -11,7 +11,7 @@ body {
   flex-direction: column;
   align-items: center;
   background: linear-gradient(rgb(24, 200, 143), rgb(75, 62, 143));
-  font-family: sans-serif;
+  font-family: "Recursive", sans-serif;
   color: whitesmoke;
 }
 
